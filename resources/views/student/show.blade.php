@@ -18,12 +18,7 @@
         <td>{{$students['phone']}}</td>
         <td>{{$students['address']}}</td>
         <td>
-            <button class="btn btn-primary btn-sm">
-                Edit
-            </button>
-            <button class="btn btn-danger btn-sm">
-                Delete
-            </button>
+            <a class="btn btn-primary btn-sm" href="/student/edit/{{$students['id']}}">Edit</a>
         </td>
     </tr> 
     

@@ -38,15 +38,23 @@ class StudentController extends Controller
     public function edit(Student $student){
         return view('student.edit', ['student' => $student]);
     }
-    public function update(Request $request, Student $student){
+    public function update(Request $request, Student $students){
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'email' => ['required','email', Rule::unique('students', 'email')],
+            'email' => ['required','email'],
             'phone'=> 'required',
             'address' => ['required', 'min:6'] 
         ]);
+        
 
-        $student->update($formFields);
+        $students->update($formFields);
+    
+        return redirect('/');
         return back()->with('message', 'Updated Succesfully');
+    }
+
+    public function destroy(Student $students){
+        $students->delete();
+        return redirect('/')->with('message', 'Deleted Succesful');
     }
 }

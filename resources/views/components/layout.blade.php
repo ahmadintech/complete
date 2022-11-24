@@ -32,9 +32,9 @@
         </div>  
     </div>
     </nav>
-    @if (Session()->has('message'))
+    @if (session()->has('message'))
       <div class="alert alert-success alert-dismissible fade show" role="alert">
-        Student has Added Succesfully
+        {{session('message')}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     @endif

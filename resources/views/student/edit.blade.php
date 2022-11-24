@@ -1,7 +1,7 @@
 <x-layout>
     <div class="row h-100 d-flex align-items-center justify-content-center">
         <div class="col-8 border m-4">
-            <form action="/student/{{$student->id}}">
+            <form method="POST" action="/student/{{$student->id}}">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" name="email" id="" class="form-control" value="{{$student->email}}">
+                <input type="email" name="email" id="" class="form-control" value="{{$student->email}}" readonly="readonly">
                 @error('email')
                 <p class="text-danger text-sm mt-1">{{$message}}</p>
                 @enderror

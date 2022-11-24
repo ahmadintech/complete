@@ -13,21 +13,25 @@
 </thead>    
 <tbody>
     @unless (count($students) == 0)  
-    @foreach ($students as $item)
-       <tr>
-        <td>{{$item['id']}}</td>
+    @php
+     $sn = 1;   
+    @endphp
+    @foreach ($students as $item) 
+        <td>{{$sn++}}</td>
         <td><img src="{{asset('images/no-image.png')}}" class="img img-fluid w-25 d-md-block d-none" alt="" srcset=""></td>
         <td>{{$item['name']}}</td>
         <td>{{$item['email']}}</td>
         <td>{{$item['phone']}}</td>
         <td>{{$item['address']}}</td>
         <td>
-            <button class="btn btn-primary btn-sm">
-                Edit
-            </button>
-            <button class="btn btn-danger btn-sm">
-                Delete
-            </button>
+            <a class="btn btn-primary btn-sm" href="/student/edit/{{$item['id']}}">Edit</a>
+            <form action="/student/{{$item['id']}}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+            </form>
         </td>
     </tr> 
     @endforeach 

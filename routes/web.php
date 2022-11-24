@@ -19,12 +19,13 @@ Route::get('/', [StudentController::class, 'index']);
 
 Route::get('/student/create', [StudentController::class, 'create']);
 
-Route::get('/student/edit/{student}', [StudentController::class, 'edit']);
+Route::get('/student/{student}', [StudentController::class, 'show']);
 
-Route::put('/student/{student}', [StudentController::class, 'update']);
+Route::get('/student/edit/{student}', [StudentController::class, 'edit']);
 
 Route::post('/student', [StudentController::class, 'store']);
 
-Route::get('/student/{student}', [StudentController::class, 'show']);
+Route::put('/student/{students}', [StudentController::class, 'update']);
 
+Route::delete('/student/{students}', [StudentController::class, 'destroy']);
 
