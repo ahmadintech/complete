@@ -29,3 +29,7 @@ Route::put('/student/{students}', [StudentController::class, 'update']);
 
 Route::delete('/student/{students}', [StudentController::class, 'destroy']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

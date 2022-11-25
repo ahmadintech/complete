@@ -23,15 +23,21 @@ class StudentController extends Controller
         return view('student.create');
     }
     public function store(Request $request){
+        
        $formFields = $request->validate([
         'name' => ['required', 'min:3'],
         'email' => ['required','email', Rule::unique('students', 'email')],
         'phone'=> 'required',
-        'address' => ['required', 'min:6'] 
+        'address' => ['required', 'min:6']
        ]);
 
+       if($request->hasFile('passport')){
+            $formFields['image'] = $request->file('passport')->store('avatar', 'public');
+        }
+    //    'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000',
+
         Student::create($formFields);
-               
+    
        return redirect('/')->with('message', 'Student Added Succesfully');
 
     }
@@ -46,6 +52,9 @@ class StudentController extends Controller
             'address' => ['required', 'min:6'] 
         ]);
         
+        if($request->hasFile('passport')){
+            $formFields['image'] = $request->file('passport')->store('avatar', 'public');
+        }
 
         $students->update($formFields);
     

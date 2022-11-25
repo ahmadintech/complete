@@ -18,7 +18,7 @@
     @endphp
     @foreach ($students as $item) 
         <td>{{$sn++}}</td>
-        <td><img src="{{asset('images/no-image.png')}}" class="img img-fluid w-25 d-md-block d-none" alt="" srcset=""></td>
+        <td><img src="{{$item['image'] ? asset('storage/'.$item['image']) : asset('images/no-image.png')}}" class="img img-fluid w-25 d-md-block d-none" alt="" srcset=""></td>
         <td>{{$item['name']}}</td>
         <td>{{$item['email']}}</td>
         <td>{{$item['phone']}}</td>

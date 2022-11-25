@@ -13,7 +13,8 @@ class Student extends Model
         'name',
         'email',
         'phone',
-        'address' 
+        'address',
+        'image'
        ];
 
     public function scopeFilter($query, array $filters){
